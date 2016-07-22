@@ -1,0 +1,10 @@
+{
+  "name": "socket-chat",
+  "description": "my first socket.io app",
+  "main": "server.js",
+  "authors": [
+    "Edmond Wu <edma_wu@yahoo.com>"
+  ],
+  "license": "MIT",
+  "homepage": ""
+}
