@@ -26,13 +26,19 @@
         </div>
     </nav>
 </div>
+<div class="row fixed-row">
+    <div class="col s12 grey center white-text" ng-show="users.length > 0">
+        Connected: {{users.join(", ")}}
+    </div>
+</div>
 <ul id="messages">
     <li ng-repeat="message in messages">{{message}}</li>
 </ul>
 <div class="row">
     <form>
-        <input id="m" class="col l11 s9" ng-model="chatMessage" autocomplete="off"/>
-        <button class="right btn col l1 s3" ng-click="send()">Send</button>
+        <input id="m" class="col l11 s9" ng-model="input" autocomplete="off"/>
+        <button class="right btn col l1 s3" ng-show="loggedIn" ng-click="send()">Send</button>
+        <button class="right btn col l1 s3" ng-hide="loggedIn" ng-click="login()">Log In</button>
     </form>
 </div>
 </body>
