@@ -19,12 +19,21 @@
     <script type="text/javascript" src="app.js"></script>
 </head>
 <body ng-app="chat" ng-controller="chatCtrl">
+<div class="navbar-fixed">
+    <nav class="light-blue">
+        <div class="nav-wrapper light-blue">
+            <a href="#!" class="brand-logo center"><b>Socket Chat App</b></a>
+        </div>
+    </nav>
+</div>
 <ul id="messages">
     <li ng-repeat="message in messages">{{message}}</li>
 </ul>
-<form>
-    <input id="m" ng-model="chatMessage" autocomplete="off"/>
-    <button class="btn" ng-click="send()">Send</button>
-</form>
+<div class="row">
+    <form>
+        <input id="m" class="col l11 s9" ng-model="chatMessage" autocomplete="off"/>
+        <button class="right btn col l1 s3" ng-click="send()">Send</button>
+    </form>
+</div>
 </body>
 </html>
