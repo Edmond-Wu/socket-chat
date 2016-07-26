@@ -31,12 +31,8 @@ app.controller('chatCtrl', function($scope, $timeout) {
      * Function to log a user in
      */
     $scope.login = function() {
-        if ($scope.input !== "" && $scope.input.length <= 20) {
-            $scope.username = $scope.input;
-            $scope.users.push($scope.username);
-            $scope.loggedIn = true;
-            $scope.input = "";
-            socket.emit('log in', $scope.username);
+        if ($scope.input !== "" && $scope.input.length <= 20 && $scope.input.length >= 3) {
+            socket.emit('logged in', $scope.input);
         }
         else {
             alert("Username must be 1-20 characters");
@@ -49,6 +45,20 @@ app.controller('chatCtrl', function($scope, $timeout) {
     socket.on('message', function(msg) {
         $scope.$apply(function() {
             $scope.messages.push(msg);
+        });
+    });
+    
+    socket.on('logged in', function() {
+        $scope.$apply(function() {
+            $scope.loggedIn = true;
+            $scope.username = $scope.input;
+            $scope.input = "";
+        });
+    });
+
+    socket.on('user connected', function(data) {
+        $scope.$apply(function() {
+            $scope.users = data;
         });
     });
 });
