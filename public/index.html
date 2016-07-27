@@ -27,15 +27,16 @@
     </nav>
 </div>
 <div class="row fixed-row">
-    <div class="col s12 grey center white-text" ng-show="users.length > 0">
-        Connected: {{users.join(", ")}}
+    <div class="col s12 grey center white-text" ng-show="userList.length > 0">
+        Connected: {{userList.join(", ")}}
     </div>
 </div>
 <ul id="messages">
-    <li ng-repeat="message in messages">{{message}}</li>
+    <li ng-repeat="message in messages"><b>{{message.user + ":"}}</b> {{message.text}}</li>
 </ul>
 <div class="row" ng-hide="loggedIn">
     <form>
+        <div class="center-align" ng-show="userTaken">USERNAME ALREADY TAKEN</div>
         <input class="col l11 s9" ng-model="input" autocomplete="off"/>
         <button class="right btn col l1 s3" ng-click="login()">Log In</button>
     </form>

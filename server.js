@@ -15,17 +15,40 @@ app.get('/', function(req, res) {
 var users = [];
 
 io.on('connection', function(socket) {
+	
+	//user attempts to log in
 	socket.on('logged in', function(user) {
-		socket.username = user;
-		users.push(user);
-		io.emit("user connected", users); //io emit sends to everyone
-		socket.emit("logged in"); //socket emit sends to specific socket
+		var userTaken = false;
+		for (var i = 0; i < users.length; i++) {
+			if (user === users[i]) {
+				userTaken = true;
+			}
+		}
+		if (userTaken) {
+			socket.emit("username taken");
+		}
+		else {
+			socket.username = user;
+			users.push(user);
+			io.emit("update userlist", users); //io emit sends to everyone
+			socket.emit("logged in"); //socket emit sends to specific socket
+		}
 	});
-	socket.on('chat message', function(msg) {
-		io.emit("message", msg);
+	
+	//when a user sends a chat message
+	socket.on('chat message', function(msg, usr) {
+		var msgObj = {text: msg, user: usr};
+		io.emit("message", msgObj);
 	});
+	
+	//when a user disconnects
 	socket.on('disconnect', function() {
-		console.log('user disconnected');
+		for (var i = 0; i < users.length; i++) {
+			if (socket.username === users[i]) {
+				users.splice(i, 1);
+			}
+		}
+		io.emit("update userlist", users);
 	});
 });
 

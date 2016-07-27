@@ -12,14 +12,15 @@ app.controller('chatCtrl', function($scope, $timeout) {
     $scope.messages = [];
     $scope.loggedIn = false;
     $scope.username = "";
-    $scope.users = [];
+    $scope.userTaken = false;
+    $scope.userList = [];
 
     /**
      * Sends a message to the server
      */
     $scope.send = function() {
         if ($scope.input !== "" && $scope.input.length <= 500) {
-            socket.emit('chat message', $scope.input);
+            socket.emit('chat message', $scope.input, $scope.username);
             $scope.input = "";
         }
         else {
@@ -47,18 +48,34 @@ app.controller('chatCtrl', function($scope, $timeout) {
             $scope.messages.push(msg);
         });
     });
-    
+
+    /**
+     * Sets the username taken variable to true
+     */
+    socket.on('username taken', function() {
+        $scope.$apply(function() {
+            $scope.userTaken = true;
+        });
+    });
+
+    /**
+     * Logs user into server
+     */
     socket.on('logged in', function() {
         $scope.$apply(function() {
             $scope.loggedIn = true;
             $scope.username = $scope.input;
+            $scope.userTaken = false;
             $scope.input = "";
         });
     });
 
-    socket.on('user connected', function(data) {
+    /**
+     * Updates client-side list of users
+     */
+    socket.on('update userlist', function(data) {
         $scope.$apply(function() {
-            $scope.users = data;
+            $scope.userList = data;
         });
     });
 });
