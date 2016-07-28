@@ -31,12 +31,17 @@
         Connected: {{userList.join(", ")}}
     </div>
 </div>
-<ul id="messages">
-    <li ng-repeat="message in messages"><b>{{message.user + ":"}}</b> {{message.text}}</li>
-</ul>
+<div class="row" ng-repeat="message in messages track by $index">
+    <div class="col s3 offset-s3 light-blue lighten-5" ng-hide="message.user === username">
+        <b>{{message.user + ": "}}</b>{{message.text}}
+    </div>
+    <div class="col s3 offset-s6 light-blue lighten-1" ng-show="message.user === username">
+        <b>You:</b> {{message.text}}
+    </div>
+</div>
 <div class="row" ng-hide="loggedIn">
     <form>
-        <div class="center-align" ng-show="userTaken">USERNAME ALREADY TAKEN</div>
+        <div class="center-align taken" ng-show="userTaken"><b>USERNAME ALREADY TAKEN</b></div>
         <input class="col l11 s9" ng-model="input" autocomplete="off"/>
         <button class="right btn col l1 s3" ng-click="login()">Log In</button>
     </form>
