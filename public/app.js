@@ -13,7 +13,11 @@ app.controller('chatCtrl', function($scope, $timeout) {
     $scope.loggedIn = false;
     $scope.username = "";
     $scope.userTaken = false;
+    $scope.invalidUser = false;
+    $scope.invalidMsg = false;
     $scope.userList = [];
+    $scope.chooseColor = false;
+    $scope.color = "";
 
     /**
      * Sends a message to the server
@@ -22,9 +26,10 @@ app.controller('chatCtrl', function($scope, $timeout) {
         if ($scope.input !== "" && $scope.input.length <= 500) {
             socket.emit('chat message', $scope.input, $scope.username);
             $scope.input = "";
+            $scope.invalidMsg = false;
         }
         else {
-            alert("Message must be 1-500 characters");
+            $scope.invalidMsg = true;
         }
     };
 
@@ -33,11 +38,19 @@ app.controller('chatCtrl', function($scope, $timeout) {
      */
     $scope.login = function() {
         if ($scope.input !== "" && $scope.input.length <= 20 && $scope.input.length >= 3) {
+            $scope.invalidUser = false;
             socket.emit('logged in', $scope.input);
         }
         else {
-            alert("Username must be 1-20 characters");
+            $scope.invalidUser = true;
         }
+    };
+
+    /**
+     * Toggles chooseColor variable which displays the color menu
+     */
+    $scope.clickColor = function() {
+        $scope.chooseColor = !$scope.chooseColor;
     };
     
     /**

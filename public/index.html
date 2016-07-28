@@ -1,14 +1,16 @@
 <!doctype html>
 <html>
 <head>
-    <title>Socket.IO Chat App</title>
+    <title>Socket Chat App</title>
     <meta charset="utf-8">
-    <meta name="description" content="Chatroom application developed with socket.IO">
+    <meta name="description"
+          content="Basic chatroom application developed with socket.IO featuring a username-based log-in system.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico"/>
 
     <!-- Imported stylesheets -->
-    <link type="text/css" rel="stylesheet" href="components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="components/materialize/dist/css/materialize.min.css"
+          media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="assets/css/app.css"/>
 
     <!-- Imported scripts -->
@@ -19,6 +21,7 @@
     <script type="text/javascript" src="app.js" defer></script>
 </head>
 <body ng-app="chat" ng-controller="chatCtrl">
+<h1 class="hidden">Socket.IO Chat App</h1>
 <div class="navbar-fixed">
     <nav class="light-blue">
         <div class="nav-wrapper light-blue">
@@ -28,28 +31,39 @@
 </div>
 <div class="row fixed-row">
     <div class="col s12 grey center white-text" ng-show="userList.length > 0">
-        Connected: {{userList.join(", ")}}
+        <b>Connected:</b> {{userList.join(", ")}}
+    </div>
+    <div class="center br-top" ng-show="loggedIn">
+        <button class="btn waves-effect color-button" ng-click="clickColor()">Set Color</button>
     </div>
 </div>
 <div class="row" ng-repeat="message in messages track by $index">
-    <div class="col s3 offset-s3 light-blue lighten-5" ng-hide="message.user === username">
-        <b>{{message.user + ": "}}</b>{{message.text}}
+    <div class="col s3 offset-s3 black bubble white-text" ng-hide="message.user === username">
+        <b>{{message.user + ": "}}</b><br>{{message.text}}
     </div>
-    <div class="col s3 offset-s6 light-blue lighten-1" ng-show="message.user === username">
-        <b>You:</b> {{message.text}}
+    <div class="col s3 offset-s6 light-blue bubble white-text" ng-show="message.user === username">
+        <b class="center">You:</b><br>{{message.text}}
     </div>
 </div>
-<div class="row" ng-hide="loggedIn">
+<div class="row bottom" ng-hide="loggedIn">
     <form>
         <div class="center-align taken" ng-show="userTaken"><b>USERNAME ALREADY TAKEN</b></div>
-        <input class="col l11 s9" ng-model="input" autocomplete="off"/>
-        <button class="right btn col l1 s3" ng-click="login()">Log In</button>
+        <div class="center-align invalid" ng-show="invalidUser"><b>USERNAME MUST BE 3 - 20 CHARACTERS</b></div>
+        <input type="text" class="col l11 s9" ng-model="input" autocomplete="off"/>
+        <button class="right btn col l1 s3 color-button" ng-click="login()"><b>Log In</b></button>
     </form>
 </div>
-<div class="row" ng-show="loggedIn">
+<div class="row bottom" ng-show="loggedIn">
+    <div class="center-align" ng-show="chooseColor">
+        <button class="btn waves-effect light-blue color-button">Blue</button>
+        <button class="btn waves-effect red lighten-1 color-button">Red</button>
+        <button class="btn waves-effect green color-button">Green</button>
+        <button class="btn waves-effect deep-purple color-button">Purple</button>
+    </div>
     <form>
-        <input class="col l11 s9" ng-model="input" autocomplete="off"/>
-        <button class="right btn col l1 s3" ng-click="send()">Send</button>
+        <div class="center-align invalid" ng-show="invalidMsg"><b>MESSAGE MUST BE 1 - 500 CHARACTERS</b></div>
+        <input type="text" class="col l11 s9" ng-model="input" autocomplete="off"/>
+        <button class="right btn col l1 s3 color-button" ng-click="send()"><b>Send</b></button>
     </form>
 </div>
 </body>

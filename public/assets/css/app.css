@@ -16,8 +16,8 @@ body {
     font-family: Montserrat, Helvetica, Arial, sans-serif;
 }
 
-form {
-    padding: 3px;
+.bottom {
+    padding: 25px 50px 25px 50px;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -30,6 +30,28 @@ form input {
     margin-right: .5%;
 }
 
-.taken {
+.taken, .invalid {
     color: red;
+}
+
+.br-top {
+    padding-top: 2em;
+}
+
+.bubble {
+    border-radius: 20px;
+    padding: 10px !important;
+    word-break: break-all;
+}
+
+.color-button {
+    border-radius: 5px;
+}
+
+.color-list {
+    display: inline !important;
+}
+
+.hidden {
+    display: none;
 }
