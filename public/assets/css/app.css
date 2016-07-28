@@ -46,6 +46,8 @@ form input {
 
 .color-button {
     border-radius: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
 }
 
 .color-list {
