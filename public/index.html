@@ -49,8 +49,8 @@
     <form>
         <div class="center-align taken" ng-show="userTaken"><b>USERNAME ALREADY TAKEN</b></div>
         <div class="center-align invalid" ng-show="invalidUser"><b>USERNAME MUST BE 3 - 20 CHARACTERS</b></div>
-        <input type="text" class="col l11 s9" ng-model="input" autocomplete="off"/>
-        <button class="right btn col l1 s3 color-button" ng-click="login()"><b>Log In</b></button>
+        <input type="text" class="col l11 s7" ng-model="input" autocomplete="off"/>
+        <button class="right btn col l1 s5 color-button" ng-click="login()"><b>Log In</b></button>
     </form>
 </div>
 <div class="row bottom" ng-show="loggedIn">
@@ -62,8 +62,8 @@
     </div>
     <form>
         <div class="center-align invalid" ng-show="invalidMsg"><b>MESSAGE MUST BE 1 - 500 CHARACTERS</b></div>
-        <input type="text" class="col l11 s9" ng-model="input" autocomplete="off"/>
-        <button class="right btn col l1 s3 color-button" ng-click="send()"><b>Send</b></button>
+        <input type="text" class="col l11 s7" ng-model="input" autocomplete="off"/>
+        <button class="right btn col l1 s5 color-button" ng-click="send()"><b>Send</b></button>
     </form>
 </div>
 </body>

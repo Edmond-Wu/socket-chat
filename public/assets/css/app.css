@@ -41,13 +41,16 @@ form input {
 .bubble {
     border-radius: 20px;
     padding: 10px !important;
-    word-break: break-all;
 }
 
 .color-button {
     border-radius: 5px;
     padding-left: 7px;
     padding-right: 7px;
+}
+
+.bubble, .color-button {
+    word-break: break-all;
 }
 
 .color-list {
