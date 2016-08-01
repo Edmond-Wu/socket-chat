@@ -55,10 +55,10 @@
 </div>
 <div class="row bottom" ng-show="loggedIn">
     <div class="center-align" ng-show="chooseColor">
-        <button class="btn waves-effect light-blue color-button">Blue</button>
-        <button class="btn waves-effect red lighten-1 color-button">Red</button>
-        <button class="btn waves-effect green color-button">Green</button>
-        <button class="btn waves-effect deep-purple color-button">Purple</button>
+        <a class="btn-floating btn-large waves-effect waves-light blue" ng-click="color = 'light-blue'"><i ng-show="color === 'light-blue'" class="material-icons">&#10003</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red" ng-click="color = 'red'"><i ng-show="color === 'red'" class="material-icons">&#10003</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light green" ng-click="color = 'green'"><i ng-show="color === 'green'" class="material-icons">&#10003</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light deep-purple" ng-click="color = 'deep-purple'"><i ng-show="color === 'deep-purple'" class="material-icons">&#10003</i></a>
     </div>
     <form>
         <div class="center-align invalid" ng-show="invalidMsg"><b>MESSAGE MUST BE 1 - 500 CHARACTERS</b></div>

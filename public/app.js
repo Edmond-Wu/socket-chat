@@ -17,7 +17,7 @@ app.controller('chatCtrl', function($scope, $timeout) {
     $scope.invalidMsg = false;
     $scope.userList = [];
     $scope.chooseColor = false;
-    $scope.color = "";
+    $scope.color = "light-blue";
 
     /**
      * Sends a message to the server
@@ -79,6 +79,7 @@ app.controller('chatCtrl', function($scope, $timeout) {
             $scope.loggedIn = true;
             $scope.username = $scope.input;
             $scope.userTaken = false;
+
             $scope.input = "";
         });
     });
