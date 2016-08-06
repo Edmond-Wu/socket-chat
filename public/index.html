@@ -9,8 +9,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico"/>
 
     <!-- Imported stylesheets -->
-    <link type="text/css" rel="stylesheet" href="components/materialize/dist/css/materialize.min.css"
-          media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="components/materialize/dist/css/materialize.min.css" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="assets/css/app.css"/>
 
     <!-- Imported scripts -->
@@ -45,7 +44,7 @@
         <b>You:</b><br>{{message.text}}
     </div>
 </div>
-<div class="row bottom" ng-hide="loggedIn">
+<div class="row bottom blue lighten-5" ng-hide="loggedIn">
     <form>
         <div class="center-align taken" ng-show="userTaken"><b>USERNAME ALREADY TAKEN</b></div>
         <div class="center-align invalid" ng-show="invalidUser"><b>USERNAME MUST BE 3 - 20 CHARACTERS</b></div>
@@ -53,7 +52,7 @@
         <button class="right btn col l1 s5 color-button" ng-click="login()"><b>Log In</b></button>
     </form>
 </div>
-<div class="row bottom" ng-show="loggedIn">
+<div class="row bottom blue lighten-5" ng-show="loggedIn">
     <div class="center-align" ng-show="chooseColor">
         <a class="btn-floating btn-large waves-effect waves-light blue" ng-click="color = 'light-blue'"><i ng-show="color === 'light-blue'" class="material-icons">&#10003</i></a>
         <a class="btn-floating btn-large waves-effect waves-light red" ng-click="color = 'red'"><i ng-show="color === 'red'" class="material-icons">&#10003</i></a>
