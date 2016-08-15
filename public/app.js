@@ -24,7 +24,7 @@ app.controller('chatCtrl', function($scope, $timeout) {
      */
     $scope.send = function() {
         if ($scope.input !== "" && $scope.input.length <= 500) {
-            socket.emit('chat message', $scope.input, $scope.username);
+            socket.emit('chat message', $scope.input, $scope.username, $scope.color);
             $scope.input = "";
             $scope.invalidMsg = false;
         }
@@ -37,7 +37,7 @@ app.controller('chatCtrl', function($scope, $timeout) {
      * Function to log a user in
      */
     $scope.login = function() {
-        if ($scope.input !== "" && $scope.input.length <= 20 && $scope.input.length >= 3) {
+        if ($scope.input !== "" && $scope.input.length <= 20 && $scope.input.length >= 2) {
             $scope.invalidUser = false;
             socket.emit('logged in', $scope.input);
         }
@@ -51,6 +51,14 @@ app.controller('chatCtrl', function($scope, $timeout) {
      */
     $scope.clickColor = function() {
         $scope.chooseColor = !$scope.chooseColor;
+    };
+
+    /**
+     * Sets the color
+     * @param color
+     */
+    $scope.setColor = function(color) {
+        $scope.color = color;
     };
     
     /**
@@ -79,7 +87,6 @@ app.controller('chatCtrl', function($scope, $timeout) {
             $scope.loggedIn = true;
             $scope.username = $scope.input;
             $scope.userTaken = false;
-
             $scope.input = "";
         });
     });

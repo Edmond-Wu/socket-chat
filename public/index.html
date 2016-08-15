@@ -24,40 +24,40 @@
 <div class="navbar-fixed">
     <nav class="light-blue">
         <div class="nav-wrapper light-blue">
-            <a href="#!" class="brand-logo center"><b>Socket Chat App</b></a>
+            <a href="#!" class="brand-logo center"><b>Socket Chat</b></a>
         </div>
     </nav>
 </div>
 <div class="row fixed-row">
     <div class="col s12 grey center white-text" ng-show="userList.length > 0">
-        <b>Connected:</b> {{userList.join(", ")}}
+        <b><u>Connected:</u></b> {{userList.join(", ")}}
     </div>
     <div class="center br-top" ng-show="loggedIn">
         <button class="btn waves-effect color-button" ng-click="clickColor()">Set Color</button>
     </div>
 </div>
 <div class="row" ng-repeat="message in messages track by $index">
-    <div class="col s3 offset-s3 black bubble white-text" ng-hide="message.user === username">
+    <div class="col s3 offset-s3 bubble white-text" ng-class="message.color" ng-hide="message.user === username">
         <b>{{message.user + ": "}}</b><br>{{message.text}}
     </div>
-    <div class="col s3 offset-s6 light-blue bubble white-text" ng-show="message.user === username">
-        <b>You:</b><br>{{message.text}}
+    <div class="col s3 offset-s6 bubble white-text" ng-class="color" ng-show="message.user === username">
+        <b><u>You:</u></b><br>{{message.text}}
     </div>
 </div>
 <div class="row bottom blue lighten-5" ng-hide="loggedIn">
     <form>
         <div class="center-align taken" ng-show="userTaken"><b>USERNAME ALREADY TAKEN</b></div>
-        <div class="center-align invalid" ng-show="invalidUser"><b>USERNAME MUST BE 3 - 20 CHARACTERS</b></div>
+        <div class="center-align invalid" ng-show="invalidUser"><b>USERNAME MUST BE 2 - 20 CHARACTERS</b></div>
         <input type="text" class="col l11 s7" ng-model="input" autocomplete="off"/>
         <button class="right btn col l1 s5 color-button" ng-click="login()"><b>Log In</b></button>
     </form>
 </div>
 <div class="row bottom blue lighten-5" ng-show="loggedIn">
-    <div class="center-align" ng-show="chooseColor">
-        <a class="btn-floating btn-large waves-effect waves-light blue" ng-click="color = 'light-blue'"><i ng-show="color === 'light-blue'" class="material-icons">&#10003</i></a>
-        <a class="btn-floating btn-large waves-effect waves-light red" ng-click="color = 'red'"><i ng-show="color === 'red'" class="material-icons">&#10003</i></a>
-        <a class="btn-floating btn-large waves-effect waves-light green" ng-click="color = 'green'"><i ng-show="color === 'green'" class="material-icons">&#10003</i></a>
-        <a class="btn-floating btn-large waves-effect waves-light deep-purple" ng-click="color = 'deep-purple'"><i ng-show="color === 'deep-purple'" class="material-icons">&#10003</i></a>
+    <div class="center-align one-br" ng-show="chooseColor">
+        <a class="btn-floating btn-large waves-effect waves-light blue" ng-click="setColor('light-blue')"><i ng-show="color === 'light-blue'" class="material-icons">&#10003</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red" ng-click="setColor('red')"><i ng-show="color === 'red'" class="material-icons">&#10003</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light green" ng-click="setColor('green')"><i ng-show="color === 'green'" class="material-icons">&#10003</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light deep-purple" ng-click="setColor('deep-purple')"><i ng-show="color === 'deep-purple'" class="material-icons">&#10003</i></a>
     </div>
     <form>
         <div class="center-align invalid" ng-show="invalidMsg"><b>MESSAGE MUST BE 1 - 500 CHARACTERS</b></div>

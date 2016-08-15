@@ -17,7 +17,7 @@ var users = [];
 io.on('connection', function(socket) {
 	
 	//user attempts to log in
-	socket.on('logged in', function(user) {
+	socket.on('logged in', function(user, clr) {
 		var userTaken = false;
 		for (var i = 0; i < users.length; i++) {
 			if (user === users[i]) {
@@ -36,11 +36,11 @@ io.on('connection', function(socket) {
 	});
 	
 	//when a user sends a chat message
-	socket.on('chat message', function(msg, usr) {
-		var msgObj = {text: msg, user: usr};
+	socket.on('chat message', function(msg, usr, clr) {
+		var msgObj = {text: msg, user: usr, color: clr};
 		io.emit("message", msgObj);
 	});
-	
+
 	//when a user disconnects
 	socket.on('disconnect', function() {
 		for (var i = 0; i < users.length; i++) {
