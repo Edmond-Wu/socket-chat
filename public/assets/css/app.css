@@ -46,6 +46,11 @@ form input {
 .color-list {
     display: inline !important;
 }
+.input-text{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
 .hidden {
     display: none;
 }

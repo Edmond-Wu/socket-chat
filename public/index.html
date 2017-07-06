@@ -6,7 +6,7 @@
     <meta name="description"
           content="Basic chatroom application developed with socket.IO featuring a username-based log-in system.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/logos/favicon.ico"/>
 
     <!-- Imported stylesheets -->
     <link type="text/css" rel="stylesheet" href="components/materialize/dist/css/materialize.min.css" media="screen,projection"/>
@@ -24,7 +24,7 @@
 <div class="navbar-fixed">
     <nav class="light-blue">
         <div class="nav-wrapper light-blue">
-            <a href="#!" class="brand-logo center"><b>Socket Chat App</b></a>
+            <a href="#!" class="brand-logo center"><img src="assets/logos/Socket-Chat-App-logo.png" width="300px"/></a>
         </div>
     </nav>
 </div>
@@ -48,7 +48,7 @@
     <form>
         <div class="center-align taken" ng-if="userTaken"><b>USERNAME ALREADY TAKEN</b></div>
         <div class="center-align invalid" ng-if="invalidUser"><b>USERNAME MUST BE 2 - 20 CHARACTERS</b></div>
-        <input type="text" class="col l11 s7" ng-model="input" autocomplete="off"/>
+        <input type="text" class="col l11 s7 input-text" ng-model="input" autocomplete="off"/>
         <button class="right btn col l1 s5 color-button" ng-click="login()"><b>Log In</b></button>
     </form>
 </div>
@@ -61,7 +61,7 @@
     </div>
     <form>
         <div class="center-align invalid" ng-if="invalidMsg"><b>MESSAGE MUST BE 1 - 500 CHARACTERS</b></div>
-        <input type="text" class="col l11 s7" ng-model="input" autocomplete="off"/>
+        <input type="text" class="col l11 s7 input-text" ng-model="input" autocomplete="off"/>
         <button class="right btn col l1 s5 color-button" ng-click="send()"><b>Send</b></button>
     </form>
 </div>
