@@ -1,4 +1,4 @@
-# Chat
+# Socket.io Chat
 Basic socket.io chat application. Users log in with a name, and then access the chatroom with other users connected. Users can also set the display color of their own messages to differentiate themselves.
 
 ## Technologies
