@@ -1,12 +1,10 @@
 /**
- * Created by ewu on 7/22/2016.
+ * Created by Edmond Wu on 7/22/2016.
  */
 
 var app = angular.module('chat', []);
-
 app.controller('chatCtrl', function($scope, $timeout) {
     var socket = io(); //use socket
-
     //App fields
     $scope.input = "";
     $scope.messages = [];
@@ -60,7 +58,7 @@ app.controller('chatCtrl', function($scope, $timeout) {
     $scope.setColor = function(color) {
         $scope.color = color;
     };
-    
+
     /**
      * Applies the messages array to the scope
      */

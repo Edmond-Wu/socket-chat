@@ -10,47 +10,47 @@
 body {
     font-family: Montserrat, Helvetica, Arial, sans-serif;
 }
-.bottom {
-    padding: 10px 40px 5px 40px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
 form input {
     border: 0;
     padding: 10px;
     width: 90%;
     margin-right: .5%;
 }
-.taken, .invalid {
-    color: red;
+.bottom {
+    padding: 10px 40px 5px 40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 .br-top {
     padding-top: 2em;
 }
-.one-br {
-    padding-bottom: 1em;
-}
 .bubble {
     border-radius: 20px;
     padding: 10px !important;
+}
+.bubble, .color-button {
+    word-break: break-all;
 }
 .color-button {
     border-radius: 5px;
     padding-left: 7px;
     padding-right: 7px;
 }
-.bubble, .color-button {
-    word-break: break-all;
-}
 .color-list {
     display: inline !important;
+}
+.hidden {
+    display: none;
 }
 .input-text{
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
 }
-.hidden {
-    display: none;
+.one-br {
+    padding-bottom: 1em;
+}
+.taken, .invalid {
+    color: red;
 }
