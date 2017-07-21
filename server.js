@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
+var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 //serve public directory
@@ -15,7 +15,6 @@ app.get('/', function(req, res) {
 var users = [];
 
 io.on('connection', function(socket) {
-	
 	//user attempts to log in
 	socket.on('logged in', function(user, clr) {
 		var userTaken = false;
@@ -34,13 +33,12 @@ io.on('connection', function(socket) {
 			socket.emit("logged in"); //socket emit sends to specific socket
 		}
 	});
-	
+
 	//when a user sends a chat message
 	socket.on('chat message', function(msg, usr, clr) {
 		var msgObj = {text: msg, user: usr, color: clr};
 		io.emit("message", msgObj);
 	});
-
 	//when a user disconnects
 	socket.on('disconnect', function() {
 		for (var i = 0; i < users.length; i++) {
