@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
-var http = require('http').createServer(app);
-var io = require('socket.io').listen(http);
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 var port = 3000;
 
 //serve public directory
@@ -51,6 +51,6 @@ io.on('connection', function(socket) {
 	});
 });
 
-http.listen(port, function() {
+server.listen(port, function() {
 	console.log('listening on port %d', port);
 });
