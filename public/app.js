@@ -4,7 +4,7 @@
 
 var app = angular.module('chat', []);
 app.controller('chatCtrl', function($scope, $timeout) {
-    var socket = io(); //use socket
+    var socket = io.connect(); //use socket
     //App fields
     $scope.input = "";
     $scope.messages = [];
